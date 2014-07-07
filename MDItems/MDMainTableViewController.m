@@ -56,6 +56,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // Keep track of this for transitioning to a new view
+    self.lastSelectedIndexPath = indexPath;
+    
     // Return a tableView cell with UI elements set based on the item at indexPath.row
     MDItemTableViewCell *cell = (MDItemTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
     
