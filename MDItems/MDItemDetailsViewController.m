@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sellsForLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requiredLevelLabel;
 
 @end
 
