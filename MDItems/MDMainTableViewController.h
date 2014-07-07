@@ -1,5 +1,5 @@
 //
-//  MDViewController.h
+//  MDMainTableViewController.h
 //  MDItems
 //
 //  Created by Dickman, Mike on 7/1/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDViewController : UIViewController
+@interface MDMainTableViewController : UITableViewController
 
 @end
