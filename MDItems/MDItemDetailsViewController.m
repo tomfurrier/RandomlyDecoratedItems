@@ -8,6 +8,7 @@
 
 #import "MDItemDetailsViewController.h"
 #import "MDItemPropertyTableViewCell.h"
+#import "MDItem.h"
 
 @interface MDItemDetailsViewController ()
 
@@ -34,6 +35,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.nameLabel.text = self.item.baseName;
+    self.statLabel.text = [self.item statDescription];
+    self.itemImageView.layer.magnificationFilter = kCAFilterNearest; // Prevents blurry edges when scaling pixel art
+    self.itemImageView.image = [UIImage imageNamed:self.item.imageName];
+    self.sellsForLabel.text = [NSString stringWithFormat:@"Sells for %dg", self.item.sellingPrice];
+    self.requiredLevelLabel.text = [NSString stringWithFormat:@"Required level: %d", self.item.requiredPlayerLevel];
+    
+    // Hide this for now, we'll set this up in part II
+    self.propertiesContainerView.hidden = YES;
 }
 
 #pragma mark - Table View Methods

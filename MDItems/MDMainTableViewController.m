@@ -9,6 +9,8 @@
 #import "MDMainTableViewController.h"
 #import "MDItemTableViewCell.h"
 #import "MDItemDetailsViewController.h"
+#import "MDItemFactory.h"
+#import "MDItem.h"
 
 @interface MDMainTableViewController ()
 
@@ -39,7 +41,11 @@
 #pragma mark - Actions
 
 - (IBAction)addItemPressed:(UIBarButtonItem *)sender {
-    // Add a new item to self.items here, our array that will hold all generated items
+    
+    // Adds a newly generated item to our array of generated items
+    MDItem *item = [MDItemFactory randomItem];
+    [self.items insertObject:item atIndex:0];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view methods
@@ -56,11 +62,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Keep track of this for transitioning to a new view
-    self.lastSelectedIndexPath = indexPath;
-    
     // Return a tableView cell with UI elements set based on the item at indexPath.row
     MDItemTableViewCell *cell = (MDItemTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
+    
+    MDItem *item = self.items[indexPath.row];
+    cell.itemImageView.layer.magnificationFilter = kCAFilterNearest; // Prevents blurry edges when scaling pixel art
+    cell.itemImageView.image = [UIImage imageNamed:item.imageName];
+    cell.nameLabel.text = item.baseName;
+    cell.statLabel.text = [item statDescription]; // We'll create this method next!
     
     return cell;
 }
@@ -73,8 +82,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // Keep track of this for transitioning to a new view
+    self.lastSelectedIndexPath = indexPath;
+    
     // When a row is tapped, we'll segue to a view that shows more detail about the item at indexPath.row
     [self performSegueWithIdentifier:@"SegueToItemDetails" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SegueToItemDetails"]) {
+        MDItemDetailsViewController *detailsVC = (MDItemDetailsViewController*)segue.destinationViewController;
+        detailsVC.item = self.items[self.lastSelectedIndexPath.row];
+    }
 }
 
 

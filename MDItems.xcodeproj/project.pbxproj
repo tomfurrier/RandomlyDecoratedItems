@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9D4E16C319644FD80042E7CF /* MDItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E16C219644FD80042E7CF /* MDItemDetailsViewController.m */; };
 		9D4E16C61964535D0042E7CF /* MDItemPropertyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E16C51964535D0042E7CF /* MDItemPropertyTableViewCell.m */; };
+		9DB2FA34196CD14D004F4B3E /* MDItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2FA33196CD14D004F4B3E /* MDItem.m */; };
+		9DB2FA37196CD175004F4B3E /* MDWeapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2FA36196CD175004F4B3E /* MDWeapon.m */; };
+		9DB2FA3A196CD17A004F4B3E /* MDArmor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2FA39196CD17A004F4B3E /* MDArmor.m */; };
+		9DB2FA40196CD365004F4B3E /* MDItemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB2FA3F196CD365004F4B3E /* MDItemFactory.m */; };
 		9DE6A6A6196339EB00D42339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE6A6A5196339EB00D42339 /* Foundation.framework */; };
 		9DE6A6A8196339EB00D42339 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE6A6A7196339EB00D42339 /* CoreGraphics.framework */; };
 		9DE6A6AA196339EB00D42339 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE6A6A9196339EB00D42339 /* UIKit.framework */; };
@@ -41,6 +45,14 @@
 		9D4E16C219644FD80042E7CF /* MDItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemDetailsViewController.m; sourceTree = "<group>"; };
 		9D4E16C41964535D0042E7CF /* MDItemPropertyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDItemPropertyTableViewCell.h; sourceTree = "<group>"; };
 		9D4E16C51964535D0042E7CF /* MDItemPropertyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemPropertyTableViewCell.m; sourceTree = "<group>"; };
+		9DB2FA32196CD14D004F4B3E /* MDItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDItem.h; sourceTree = "<group>"; };
+		9DB2FA33196CD14D004F4B3E /* MDItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItem.m; sourceTree = "<group>"; };
+		9DB2FA35196CD175004F4B3E /* MDWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWeapon.h; sourceTree = "<group>"; };
+		9DB2FA36196CD175004F4B3E /* MDWeapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWeapon.m; sourceTree = "<group>"; };
+		9DB2FA38196CD17A004F4B3E /* MDArmor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDArmor.h; sourceTree = "<group>"; };
+		9DB2FA39196CD17A004F4B3E /* MDArmor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDArmor.m; sourceTree = "<group>"; };
+		9DB2FA3E196CD365004F4B3E /* MDItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDItemFactory.h; sourceTree = "<group>"; };
+		9DB2FA3F196CD365004F4B3E /* MDItemFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemFactory.m; sourceTree = "<group>"; };
 		9DE6A6A2196339EB00D42339 /* MDItems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDItems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DE6A6A5196339EB00D42339 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DE6A6A7196339EB00D42339 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +109,21 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
+		9DB2FA31196CD143004F4B3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DB2FA32196CD14D004F4B3E /* MDItem.h */,
+				9DB2FA33196CD14D004F4B3E /* MDItem.m */,
+				9DB2FA35196CD175004F4B3E /* MDWeapon.h */,
+				9DB2FA36196CD175004F4B3E /* MDWeapon.m */,
+				9DB2FA38196CD17A004F4B3E /* MDArmor.h */,
+				9DB2FA39196CD17A004F4B3E /* MDArmor.m */,
+				9DB2FA3E196CD365004F4B3E /* MDItemFactory.h */,
+				9DB2FA3F196CD365004F4B3E /* MDItemFactory.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		9DE6A699196339EB00D42339 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +157,7 @@
 		9DE6A6AB196339EB00D42339 /* MDItems */ = {
 			isa = PBXGroup;
 			children = (
+				9DB2FA31196CD143004F4B3E /* Model */,
 				9DE6A6DB19633A0600D42339 /* ViewControllers */,
 				9D4E16C019643EDE0042E7CF /* Application */,
 				9DE6A6B7196339EB00D42339 /* Main.storyboard */,
@@ -281,9 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DB2FA37196CD175004F4B3E /* MDWeapon.m in Sources */,
 				9DE6A6B2196339EB00D42339 /* main.m in Sources */,
+				9DB2FA40196CD365004F4B3E /* MDItemFactory.m in Sources */,
 				9DE6A6EA19633DE600D42339 /* MDMainTableViewController.m in Sources */,
+				9DB2FA34196CD14D004F4B3E /* MDItem.m in Sources */,
 				9D4E16C319644FD80042E7CF /* MDItemDetailsViewController.m in Sources */,
+				9DB2FA3A196CD17A004F4B3E /* MDArmor.m in Sources */,
 				9DE6A6B6196339EB00D42339 /* MDAppDelegate.m in Sources */,
 				9DE6A6ED19633E4500D42339 /* MDItemTableViewCell.m in Sources */,
 				9D4E16C61964535D0042E7CF /* MDItemPropertyTableViewCell.m in Sources */,
