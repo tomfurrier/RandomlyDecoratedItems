@@ -69,7 +69,7 @@
     cell.itemImageView.layer.magnificationFilter = kCAFilterNearest; // Prevents blurry edges when scaling pixel art
     cell.itemImageView.image = [UIImage imageNamed:item.imageName];
     cell.nameLabel.text = item.baseName;
-    cell.statLabel.text = [item statDescription]; // We'll create this method next!
+    cell.statLabel.text = [item statDescription];
     
     return cell;
 }
