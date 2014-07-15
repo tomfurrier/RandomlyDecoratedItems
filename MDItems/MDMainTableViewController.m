@@ -11,6 +11,7 @@
 #import "MDItemDetailsViewController.h"
 #import "MDItemFactory.h"
 #import "MDItem.h"
+#import "UIColor+ItemColors.h"
 
 @interface MDMainTableViewController ()
 
@@ -68,7 +69,8 @@
     MDItem *item = self.items[indexPath.row];
     cell.itemImageView.layer.magnificationFilter = kCAFilterNearest; // Prevents blurry edges when scaling pixel art
     cell.itemImageView.image = [UIImage imageNamed:item.imageName];
-    cell.nameLabel.text = item.baseName;
+    cell.nameLabel.text = [item fullName];
+    cell.nameLabel.textColor = [UIColor colorForItem:item];
     cell.statLabel.text = [item statDescription];
     
     return cell;

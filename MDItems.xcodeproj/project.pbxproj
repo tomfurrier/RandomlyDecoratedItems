@@ -28,6 +28,7 @@
 		9DE6A6D1196339EB00D42339 /* MDItemsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6A6D0196339EB00D42339 /* MDItemsTests.m */; };
 		9DE6A6EA19633DE600D42339 /* MDMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6A6E919633DE600D42339 /* MDMainTableViewController.m */; };
 		9DE6A6ED19633E4500D42339 /* MDItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6A6EC19633E4500D42339 /* MDItemTableViewCell.m */; };
+		9DF955C019756236003900AF /* UIColor+ItemColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF955BF19756236003900AF /* UIColor+ItemColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		9DE6A6E919633DE600D42339 /* MDMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMainTableViewController.m; sourceTree = "<group>"; };
 		9DE6A6EB19633E4500D42339 /* MDItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDItemTableViewCell.h; sourceTree = "<group>"; };
 		9DE6A6EC19633E4500D42339 /* MDItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemTableViewCell.m; sourceTree = "<group>"; };
+		9DF955BE19756236003900AF /* UIColor+ItemColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ItemColors.h"; sourceTree = "<group>"; };
+		9DF955BF19756236003900AF /* UIColor+ItemColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ItemColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,7 @@
 		9DE6A6AB196339EB00D42339 /* MDItems */ = {
 			isa = PBXGroup;
 			children = (
+				9DF955BD19756227003900AF /* Categories */,
 				9DB2FA31196CD143004F4B3E /* Model */,
 				9DE6A6DB19633A0600D42339 /* ViewControllers */,
 				9D4E16C019643EDE0042E7CF /* Application */,
@@ -209,6 +213,15 @@
 				9D4E16C51964535D0042E7CF /* MDItemPropertyTableViewCell.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9DF955BD19756227003900AF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9DF955BE19756236003900AF /* UIColor+ItemColors.h */,
+				9DF955BF19756236003900AF /* UIColor+ItemColors.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF955C019756236003900AF /* UIColor+ItemColors.m in Sources */,
 				9DB2FA37196CD175004F4B3E /* MDWeapon.m in Sources */,
 				9DE6A6B2196339EB00D42339 /* main.m in Sources */,
 				9DB2FA40196CD365004F4B3E /* MDItemFactory.m in Sources */,
