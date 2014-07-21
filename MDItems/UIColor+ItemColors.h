@@ -1,20 +1,10 @@
-//  UIColor+ItemColors.m
+//  UIColor+ItemColors.h
 
-#import "UIColor+ItemColors.h"
-#import "MDItem.h"
+#import <UIKit/UIKit.h>
+@class MDItem;
 
-@implementation UIColor (ItemColors)
+@interface UIColor (ItemColors)
 
-+(UIColor*)colorForItem:(MDItem*)item {
-    
-    switch (item.rarity) {
-        case itemRarityMagic:
-            return [self blueColor];
-        case itemRarityRare:
-            return [UIColor orangeColor];
-        default:
-            return [UIColor blackColor];
-    }
-}
++(UIColor*)colorForItem:(MDItem*)item;
 
 @end
