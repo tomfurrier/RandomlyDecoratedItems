@@ -18,7 +18,7 @@
 
 -(instancetype)initWithArmor:(MDArmor *)armor {
     if (self = [super initWithArmor:armor]) {
-        self.extraDefense = arc4random() % 4 + 1;
+        self.extraDefense = [self randomFromMin:1 max:4];
     }
     return self;
 }

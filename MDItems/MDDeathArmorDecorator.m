@@ -19,7 +19,7 @@
 
 -(instancetype)initWithArmor:(MDArmor *)armor {
     if (self = [super initWithArmor:armor]) {
-        self.chanceOfDeath = arc4random() % 3 + 1;
+        self.chanceOfDeath = [self randomFromMin:1 max:3];
     }
     return self;
 }

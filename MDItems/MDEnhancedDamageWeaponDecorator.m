@@ -18,7 +18,7 @@
 
 -(instancetype)initWithWeapon:(MDWeapon *)weapon {
     if (self = [super initWithWeapon:weapon]) {
-        self.extraDamage = arc4random() % 5 + 2;
+        self.extraDamage = [self randomFromMin:2 max:6];
     }
     return self;
 }

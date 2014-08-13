@@ -19,7 +19,7 @@
 
 -(instancetype)initWithWeapon:(MDWeapon *)weapon {
     if (self = [super initWithWeapon:weapon]) {
-        self.chanceForFullRecoveryOnEnemyDefeated = arc4random() % 6 + 1;
+        self.chanceForFullRecoveryOnEnemyDefeated = [self randomFromMin:1 max:5];
     }
     return self;
 }
@@ -53,7 +53,7 @@
 #pragma mark - Modifiers
 
 -(void)player:(MDPlayer *)player didDefeatEnemy:(MDEnemy *)enemy messageLog:(NSMutableArray *)messageLog {
-    if ((arc4random() % 100) + 1 <= self.chanceForFullRecoveryOnEnemyDefeated) {
+    if ((arc4random() % 100) < self.chanceForFullRecoveryOnEnemyDefeated) {
         player.currentHealth = player.maxHealth;
         
         MDBattleMessage *message = [MDBattleMessage messageWithMessage:@"Full heal triggered!" describesPlayerAction:YES];

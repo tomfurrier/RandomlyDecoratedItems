@@ -18,7 +18,7 @@
 
 -(instancetype)initWithWeapon:(MDWeapon *)weapon {
     if (self = [super initWithWeapon:weapon]) {
-        self.extraCritDamagePercentage = arc4random() % 50 + 25;
+        self.extraCritDamagePercentage = [self randomFromMin:25 max:75];
     }
     return self;
 }

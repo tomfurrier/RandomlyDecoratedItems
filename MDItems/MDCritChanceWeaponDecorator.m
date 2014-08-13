@@ -18,7 +18,7 @@
 
 -(instancetype)initWithWeapon:(MDWeapon *)weapon {
     if (self = [super initWithWeapon:weapon]) {
-        self.critChanceBonus = arc4random() % 5 + 5;
+        self.critChanceBonus = [self randomFromMin:5 max:10];
     }
     return self;
 }

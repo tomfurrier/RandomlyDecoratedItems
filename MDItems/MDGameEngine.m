@@ -65,7 +65,7 @@
     } else {
         
         // No weapon was equipped, so only do a couple of damage points
-        int unarmedDamage = arc4random() % 2 + 1;
+        int unarmedDamage = [self randomFromMin:1 max:2];
         enemy.currentHealth -= unarmedDamage;
         [messageLog insertObject:[MDBattleMessage messageWithMessage:[NSString stringWithFormat:@"Punched for %d damage", unarmedDamage]
                                                   describesPlayerAction:YES]

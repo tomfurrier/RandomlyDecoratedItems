@@ -18,7 +18,7 @@
 
 -(instancetype)initWithArmor:(MDArmor *)armor {
     if (self = [super initWithArmor:armor]) {
-        self.extraPercentDamageReflected = arc4random() % 40 + 10;
+        self.extraPercentDamageReflected = [self randomFromMin:10 max:50];
     }
     return self;
 }

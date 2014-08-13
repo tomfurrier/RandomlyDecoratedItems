@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+Random.h"
 
 typedef enum {
     itemRarityCommon,
