@@ -64,4 +64,8 @@
     [super player:player didDefeatEnemy:enemy messageLog:messageLog];
 }
 
+-(int)sellingPrice {
+    return (self.chanceForFullRecoveryOnEnemyDefeated * 2) + [super sellingPrice];
+}
+
 @end

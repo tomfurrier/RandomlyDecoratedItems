@@ -55,4 +55,9 @@
     return self.extraPercentDamageAbsorbed + [super percentDamageAbsorbed];
 }
 
+-(int)sellingPrice {
+    return (self.extraPercentDamageAbsorbed * .1) + [super sellingPrice];
+
+}
+
 @end

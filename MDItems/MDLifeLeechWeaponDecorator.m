@@ -66,4 +66,8 @@
     [super player:player didHitEnemy:enemy forDamage:damage messageLog:messageLog];
 }
 
+-(int)sellingPrice {
+    return (self.percentLifeStolenOnHit / 2) + [super sellingPrice];
+}
+
 @end

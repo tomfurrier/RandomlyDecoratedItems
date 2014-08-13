@@ -55,4 +55,8 @@
     return self.critChanceBonus + self.weapon.critChance;
 }
 
+-(int)sellingPrice {
+    return self.critChanceBonus + [super sellingPrice];
+}
+
 @end

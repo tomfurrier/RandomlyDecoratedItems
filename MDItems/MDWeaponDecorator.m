@@ -61,4 +61,8 @@
     return self.weapon.baseName;
 }
 
+-(int)sellingPrice {
+    return self.weapon.sellingPrice;
+}
+
 @end

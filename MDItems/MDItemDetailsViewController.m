@@ -53,7 +53,13 @@
     self.statLabel.text = [self.item statDescription];
     self.itemImageView.layer.magnificationFilter = kCAFilterNearest; // Prevents blurry edges when scaling pixel art
     self.itemImageView.image = [self.item imageToDisplay];
-    self.sellsForLabel.text = [NSString stringWithFormat:@"Sells for %dg", self.item.sellingPrice];
+    
+    if (self.item.hasBeenIdentified) {
+        self.sellsForLabel.text = [NSString stringWithFormat:@"Sells for %dg", self.item.sellingPrice];
+    } else {
+        self.sellsForLabel.text = @"Sells for ?";
+    }
+
     
     // Hide the properties table only if the item has none or it hasn't been identified
     if (!self.item.hasBeenIdentified) {

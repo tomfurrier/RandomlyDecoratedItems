@@ -59,6 +59,8 @@
     return self.extraDamage + [super maxDamage];
 }
 
-
+-(int)sellingPrice {
+    return self.extraDamage + [super sellingPrice];
+}
 
 @end

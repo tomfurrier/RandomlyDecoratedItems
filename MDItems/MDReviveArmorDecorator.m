@@ -63,4 +63,8 @@
     }
 }
 
+-(int)sellingPrice {
+    return self.chanceOfReviveOnDeath + [super sellingPrice];
+}
+
 @end

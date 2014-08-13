@@ -63,4 +63,8 @@
     }
 }
 
+-(int)sellingPrice {
+    return (self.chanceOfDeath * 2) + [super sellingPrice];
+}
+
 @end

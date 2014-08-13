@@ -57,4 +57,8 @@
     return self.armor.baseName;
 }
 
+-(int)sellingPrice {
+    return self.armor.sellingPrice;
+}
+
 @end

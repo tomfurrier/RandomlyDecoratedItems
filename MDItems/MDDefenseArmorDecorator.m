@@ -55,4 +55,8 @@
     return self.extraDefense + [super defense];
 }
 
+-(int)sellingPrice {
+    return (self.extraDefense * 2) + [super sellingPrice];
+}
+
 @end

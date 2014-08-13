@@ -55,4 +55,8 @@
     return self.extraCritDamagePercentage + self.weapon.critPercentBonusDamage;
 }
 
+-(int)sellingPrice {
+    return (self.extraCritDamagePercentage * .1) + [super sellingPrice];
+}
+
 @end

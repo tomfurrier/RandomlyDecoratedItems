@@ -104,7 +104,7 @@
     [self tweakBaseStatsOfItem:armor byMaxAmount:2];
     
     // Check for rarity
-    if (YES){//arc4random() % 15 == 0) {
+    if (arc4random() % 15 == 0) {
         
         // 1 in 15 chance - item is rare, add two properties
         armor = [self armorFromArmor:armor withNumberOfDecorators:[self randomFromMin:2 max:3]];
