@@ -1,4 +1,10 @@
+//
 //  MDItem.m
+//  ItemsDecoratorPattern
+//
+//  Created by Dickman, Mike on 7/24/14.
+//  Copyright (c) 2014 Quicken Loans. All rights reserved.
+//
 
 #import "MDItem.h"
 
@@ -6,23 +12,17 @@
 
 -(id)init {
     if (self = [super init]) {
-        
-        self.sellingPrice = 10;
-        self.requiredPlayerLevel = 1;
-        self.rarity = itemRarityCommon;
-        self.propertyDescriptions = [NSMutableArray array];
-        self.namePrefix = @"";
-        self.nameSuffix = @"";
+        // Items start out as identified
+        self.hasBeenIdentified = YES;
     }
     return self;
 }
 
--(NSString *)statDescription {
-    // Override in subclass to provide description;
-    return @"";
-}
-
 -(NSString *)fullName {
+    
+    if (!self.hasBeenIdentified) {
+        return [NSString stringWithFormat:@"Unidentified %@", self.baseName];
+    }
     
     // Add the correct spacing if a prefix has been set
     NSString *prefix = @"";
@@ -37,6 +37,33 @@
     }
     
     return [NSString stringWithFormat:@"%@%@%@", prefix, self.baseName, suffix];
+}
+
+-(UIImage *)imageToDisplay {
+    
+    if (self.rarity == itemRarityUnique) {
+        // Uniques are not yet implemented
+        return [UIImage imageNamed:self.specialImageName];
+    } else {
+        return [UIImage imageNamed:self.imageName];
+    }
+}
+
+-(NSMutableArray *)modifierDescriptions {
+    return [NSMutableArray array];
+}
+
+-(NSString *)statDescription {
+    return @"";
+}
+
+// The base items don't have a prefix or suffix, the decorators will provide them
+-(NSString *)namePrefix {
+    return nil;
+}
+
+-(NSString *)nameSuffix {
+    return nil;
 }
 
 @end

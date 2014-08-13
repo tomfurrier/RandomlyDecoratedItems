@@ -12,6 +12,8 @@
             return [self blueColor];
         case itemRarityRare:
             return [UIColor orangeColor];
+        case itemRarityUnique:
+            return [UIColor redColor];
         default:
             return [UIColor blackColor];
     }

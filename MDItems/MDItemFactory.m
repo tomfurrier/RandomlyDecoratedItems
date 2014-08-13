@@ -3,219 +3,238 @@
 #import "MDItemFactory.h"
 #import "MDWeapon.h"
 #import "MDArmor.h"
+#import "MDSword.h"
+#import "MDDagger.h"
+#import "MDClub.h"
+#import "MDHammer.h"
+#import "MDShirt.h"
+#import "MDHat.h"
+#import "MDGloves.h"
+#import "MDBoots.h"
+#import "MDEnhancedDamageWeaponDecorator.h"
+#import "MDCritChanceWeaponDecorator.h"
+#import "MDPoisonWeaponDecorator.h"
+#import "MDLifeLeechWeaponDecorator.h"
+#import "MDFullRecoveryWeaponDecorator.h"
+#import "MDCritDamageWeaponDecorator.h"
+#import "MDDefenseArmorDecorator.h"
+#import "MDReflectArmorDecorator.h"
+#import "MDAbsorbArmorDecorator.h"
+#import "MDDeathArmorDecorator.h"
+#import "MDReviveArmorDecorator.h"
+#import "NSObject+Random.h"
 
 @implementation MDItemFactory
 
 #pragma mark - Item Setup
 
-+(MDItem *)randomItem {
-    MDItem *item;
++(MDItem*)randomItem {
     
-    int itemRoll = arc4random() % 7; // A number 0 - 6
-    switch (itemRoll) {
+    if (arc4random() % 2 == 0) {
+        return [self randomWeapon];
+    } else {
+        return [self randomArmor];
+    }
+}
+
++(MDWeapon*)randomWeapon {
+    
+    MDWeapon *weapon;
+    
+    switch (arc4random() % 4) {
         case 0:
-            item = [self sword];
+            weapon = [[MDSword alloc] init];
             break;
         case 1:
-            item = [self dagger];
+            weapon = [[MDDagger alloc] init];
             break;
         case 2:
-            item = [self club];
+            weapon = [[MDClub alloc] init];
             break;
         case 3:
-            item = [self clothShirt];
-            break;
-        case 4:
-            item = [self hat];
-            break;
-        case 5:
-            item = [self gloves];
-            break;
-        case 6:
-            item = [self boots];
+            weapon = [[MDHammer alloc] init];
             break;
         default:
-            NSLog(@"Error! Tried to generate a random item that doesn't exist.");
             break;
     }
     
-    [self tweakBaseStatsOfItem:item byMaxAmount:2];
+    [self tweakBaseStatsOfItem:weapon byMaxAmount:2];
     
     // Check for rarity
-    if (arc4random() % 20 == 0) {
+    if (arc4random() % 15 == 0) {
         
-        // 1 in 20 chance - item is rare, add two properties
-        item.rarity = itemRarityRare;
-        [self enhanceItem:item withNumberOfProperties:2];
+        // 1 in 15 chance - item is rare, add two properties
+        weapon = [self weaponFromWeapon:weapon withNumberOfDecorators:[self randomFromMin:2 max:3]];
+        weapon.rarity = itemRarityRare;
+        weapon.hasBeenIdentified = NO;
         
     } else if (arc4random() % 5 == 0) {
         
         // 1 in 5 chance - item is magic, add one property
-        item.rarity = itemRarityMagic;
-        [self enhanceItem:item withNumberOfProperties:1];
+        weapon = [self weaponFromWeapon:weapon withNumberOfDecorators:1];
+        weapon.rarity = itemRarityMagic;
+        weapon.hasBeenIdentified = NO;
     }
     
-    return item;
+    return weapon;
+
+}
+
++(MDArmor*)randomArmor {
+    
+    MDArmor *armor;
+    
+    switch (arc4random() % 4) {
+        case 0:
+            armor = [[MDShirt alloc] init];
+            break;
+        case 1:
+            armor = [[MDBoots alloc] init];
+            break;
+        case 2:
+            armor = [[MDGloves alloc] init];
+            break;
+        case 3:
+            armor = [[MDHat alloc] init];
+            break;
+        default:
+            break;
+    }
+    
+    [self tweakBaseStatsOfItem:armor byMaxAmount:2];
+    
+    // Check for rarity
+    if (YES){//arc4random() % 15 == 0) {
+        
+        // 1 in 15 chance - item is rare, add two properties
+        armor = [self armorFromArmor:armor withNumberOfDecorators:[self randomFromMin:2 max:3]];
+        armor.rarity = itemRarityRare;
+        armor.hasBeenIdentified = NO;
+        
+    } else if (arc4random() % 5 == 0) {
+        
+        // 1 in 5 chance - item is magic, add one property
+        armor = [self armorFromArmor:armor withNumberOfDecorators:1];
+        armor.rarity = itemRarityMagic;
+        armor.hasBeenIdentified = NO;
+    }
+    
+    return armor;
+    
 }
 
 +(void)tweakBaseStatsOfItem:(MDItem*)item byMaxAmount:(int)maxAmount {
     
     int amountToAdd = arc4random() % (maxAmount + 1); // Returns 0 - maxAmount
     
-    if ([item isKindOfClass:[MDArmor class]]) {
-        // Add defense
-        MDArmor *armor = (MDArmor*)item;
-        armor.baseDefense += amountToAdd;
-    } else if ([item isKindOfClass:[MDWeapon class]]) {
+    if ([item isKindOfClass:[MDWeapon class]]) {
         // Add min and max damage
         MDWeapon *weapon = (MDWeapon*)item;
-        weapon.baseMinDamage += amountToAdd;
-        weapon.baseMaxDamage += amountToAdd;
+        weapon.minDamage += amountToAdd;
+        weapon.maxDamage += amountToAdd;
+    } else if ([item isKindOfClass:[MDArmor class]]) {
+        MDArmor *armor = (MDArmor*)item;
+        armor.defense += amountToAdd;
     }
     
     // Make the item sell for more, too!
     item.sellingPrice += (amountToAdd * 2);
 }
 
-+(void)enhanceItem:(MDItem*)item withNumberOfProperties:(int)numOfProperties {
+#pragma mark - Armor
+
++(MDArmor*)armorFromArmor:(MDArmor*)armor withNumberOfDecorators:(int)amountToAdd {
     
-    // Choose a random property to add
-    for (int i = 0; i < numOfProperties; i++) {
+    int numberOfDecorators = 5;
+    
+    // Possible decorators will be a pool of non-repeating indexes to use in the switch statement below that sets a corresponding decorator for that index
+    int possibleDecorators[numberOfDecorators];
+    
+    // Fill possibleDecorators with their own indexes. If selected, an index will be overwritten and never appear again.
+    for (int i = 0; i < numberOfDecorators; i++) {
+        possibleDecorators[i] = i;
+    }
+    
+    for (int i = 0; i < amountToAdd; i++) {
         
-        switch (arc4random() % 3) {
+        // Select a random index, get the value, and prevent it from appearing again
+        int randomIndex = arc4random() % numberOfDecorators;
+        int rollValue = possibleDecorators[randomIndex];
+        possibleDecorators[randomIndex] = possibleDecorators[numberOfDecorators - 1]; // Overwrite it with the index at the end
+        numberOfDecorators--; // Decrement to account for the one we "removed"
+        
+        // Wrap it in the decorator
+        switch (rollValue) {
             case 0:
-                [self addBonusGoldFindToItem:item];
+                armor = [[MDDefenseArmorDecorator alloc] initWithArmor:armor];
                 break;
             case 1:
-                [self addBonusXpPerKillToItem:item];
+                armor = [[MDReflectArmorDecorator alloc] initWithArmor:armor];
                 break;
             case 2:
-                [self addHealthRegenPerSecondToItem:item];
+                armor = [[MDAbsorbArmorDecorator alloc] initWithArmor:armor];
+                break;
+            case 3:
+                armor = [[MDDeathArmorDecorator alloc] initWithArmor:armor];
+                break;
+            case 4:
+                armor = [[MDReviveArmorDecorator alloc] initWithArmor:armor];
                 break;
             default:
                 break;
         }
+        
     }
+    return armor;
 }
 
-+(void)addBonusGoldFindToItem:(MDItem*)item {
+#pragma mark - Weapons
+
++(MDWeapon*)weaponFromWeapon:(MDWeapon*)weapon withNumberOfDecorators:(int)amountToAdd {
     
-    int max = 10;
-    int min = 5;
-    int amountToAdd = arc4random() % (max - min + 1) + min; // Returns 5 - 10
+    int numberOfDecorators = 6;
     
-    // Apply the modifier and add a relevant description
-    item.bonusGoldFind += amountToAdd;
-    NSString *description = [NSString stringWithFormat:@"Find %d%% more gold", amountToAdd];
-    [item.propertyDescriptions addObject:description];
+    // Possible decorators will be a pool of non-repeating indexes to use in the switch statement below that sets a corresponding decorator for that index
+    int possibleDecorators[numberOfDecorators];
     
-    // Add a modifier to the name of the item if none are set
-    if (item.namePrefix.length == 0) {
-        item.namePrefix = @"Lucky";
-    } else if (item.nameSuffix.length == 0) {
-        item.nameSuffix = @"of Luck";
+    // Fill possibleDecorators with their own indexes. If selected, an index will be overwritten and never appear again.
+    for (int i = 0; i < numberOfDecorators; i++) {
+        possibleDecorators[i] = i;
     }
-}
-
-+(void)addBonusXpPerKillToItem:(MDItem*)item {
     
-    int max = 15;
-    int min = 5;
-    int amountToAdd = arc4random() % (max - min + 1) + min; // Returns 5 - 15
-    
-    // Apply the modifier and add a relevant description
-    item.bonusXpPerKill += amountToAdd;
-    NSString *description = [NSString stringWithFormat:@"+%d XP per kill", amountToAdd];
-    [item.propertyDescriptions addObject:description];
-    
-    // Add a modifier to the name of the item if none are set
-    if (item.namePrefix.length == 0) {
-        item.namePrefix = @"Wise";
-    } else if (item.nameSuffix.length == 0) {
-        item.nameSuffix = @"of Wisdom";
+    for (int i = 0; i < amountToAdd; i++) {
+        
+        // Select a random index, get the value, and prevent it from appearing again
+        int randomIndex = arc4random() % numberOfDecorators;
+        int rollValue = possibleDecorators[randomIndex];
+        possibleDecorators[randomIndex] = possibleDecorators[numberOfDecorators - 1]; // Overwrite it with the index at the end
+        numberOfDecorators--; // Decrement to account for the one we "removed"
+        
+        // Wrap it in the decorator
+        switch (rollValue) {
+            case 0:
+                weapon = [[MDEnhancedDamageWeaponDecorator alloc] initWithWeapon:weapon];
+                break;
+            case 1:
+                weapon = [[MDCritChanceWeaponDecorator alloc] initWithWeapon:weapon];
+                break;
+            case 2:
+                weapon = [[MDPoisonWeaponDecorator alloc] initWithWeapon:weapon];
+                break;
+            case 3:
+                weapon = [[MDLifeLeechWeaponDecorator alloc] initWithWeapon:weapon];
+                break;
+            case 4:
+                weapon = [[MDFullRecoveryWeaponDecorator alloc] initWithWeapon:weapon];
+                break;
+            case 5:
+                weapon = [[MDCritDamageWeaponDecorator alloc] initWithWeapon:weapon];
+            default:
+                break;
+        }
+        
     }
-}
-
-+(void)addHealthRegenPerSecondToItem:(MDItem*)item {
-    
-    int max = 5;
-    int min = 2;
-    int amountToAdd = arc4random() % (max - min + 1) + min; // Returns 2 - 5
-    
-    // Apply the modifier and add a relevant description
-    item.healthRegenPerSecond += amountToAdd;
-    NSString *description = [NSString stringWithFormat:@"+%d health per second", amountToAdd];
-    [item.propertyDescriptions addObject:description];
-    
-    // Add a modifier to the name of the item if none are set
-    if (item.namePrefix.length == 0) {
-        item.namePrefix = @"Vital";
-    } else if (item.nameSuffix.length == 0) {
-        item.nameSuffix = @"of Vitality";
-    }
-}
-
-#pragma mark - Weapon Templates
-
-+(MDWeapon*)sword {
-    MDWeapon *weapon = [[MDWeapon alloc] init];
-    weapon.baseName = @"Sword";
-    weapon.imageName = @"sword";
-    weapon.baseMinDamage = 4;
-    weapon.baseMaxDamage = 7;
     return weapon;
-}
-
-+(MDWeapon*)dagger {
-    MDWeapon *weapon = [[MDWeapon alloc] init];
-    weapon.baseName = @"Dagger";
-    weapon.imageName = @"dagger";
-    weapon.baseMinDamage = 3;
-    weapon.baseMaxDamage = 6;
-    return weapon;
-}
-
-+(MDWeapon*)club {
-    MDWeapon *weapon = [[MDWeapon alloc] init];
-    weapon.baseName = @"Club";
-    weapon.imageName = @"club";
-    weapon.baseMinDamage = 1;
-    weapon.baseMaxDamage = 9;
-    return weapon;
-}
-
-#pragma mark - Armor Templates
-
-+(MDArmor*)clothShirt {
-    MDArmor *armor = [[MDArmor alloc] init];
-    armor.baseName = @"Cloth Shirt";
-    armor.imageName = @"clothShirt";
-    armor.baseDefense = 3;
-    return armor;
-}
-
-+(MDArmor*)hat {
-    MDArmor *armor = [[MDArmor alloc] init];
-    armor.baseName = @"Hat";
-    armor.imageName = @"hat";
-    armor.baseDefense = 1;
-    return armor;
-}
-
-+(MDArmor*)gloves {
-    MDArmor *armor = [[MDArmor alloc] init];
-    armor.baseName = @"Gloves";
-    armor.imageName = @"gloves";
-    armor.baseDefense = 1;
-    return armor;
-}
-
-+(MDArmor*)boots {
-    MDArmor *armor = [[MDArmor alloc] init];
-    armor.baseName = @"Boots";
-    armor.imageName = @"boots";
-    armor.baseDefense = 2;
-    return armor;
 }
 
 @end

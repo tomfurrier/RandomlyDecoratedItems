@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDMainTableViewController : UITableViewController
+@interface MDInventoryTableViewController : UITableViewController
+
+@property(nonatomic, strong) NSArray *items;
 
 @end
