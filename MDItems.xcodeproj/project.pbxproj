@@ -115,6 +115,7 @@
 		9D4E16C219644FD80042E7CF /* MDItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemDetailsViewController.m; sourceTree = "<group>"; };
 		9D4E16C41964535D0042E7CF /* MDItemPropertyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDItemPropertyTableViewCell.h; sourceTree = "<group>"; };
 		9D4E16C51964535D0042E7CF /* MDItemPropertyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDItemPropertyTableViewCell.m; sourceTree = "<group>"; };
+		9DB3AD66199D47E800F74CD6 /* MDItems-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MDItems-Prefix.pch"; path = "../../MDItemsDecorator/MDItems/MDItems-Prefix.pch"; sourceTree = "<group>"; };
 		9DC5785519914DB900843AF8 /* MDVictoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVictoryViewController.h; sourceTree = "<group>"; };
 		9DC5785619914DB900843AF8 /* MDVictoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDVictoryViewController.m; sourceTree = "<group>"; };
 		9DC57858199156DD00843AF8 /* MDLifeLeechWeaponDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLifeLeechWeaponDecorator.h; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		9DE6A6AD196339EB00D42339 /* MDItems-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MDItems-Info.plist"; sourceTree = "<group>"; };
 		9DE6A6AF196339EB00D42339 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9DE6A6B1196339EB00D42339 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9DE6A6B3196339EB00D42339 /* MDItems-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDItems-Prefix.pch"; sourceTree = "<group>"; };
 		9DE6A6B4196339EB00D42339 /* MDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDAppDelegate.h; sourceTree = "<group>"; };
 		9DE6A6B5196339EB00D42339 /* MDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDAppDelegate.m; sourceTree = "<group>"; };
 		9DE6A6B8196339EB00D42339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 				9D4738601993DF83009E6FE9 /* MDBattleMessage.h */,
 				9D4738611993DF83009E6FE9 /* MDBattleMessage.m */,
 			);
-			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		9D473863199541A7009E6FE9 /* Battle */ = {
@@ -215,7 +215,7 @@
 				9DC5785519914DB900843AF8 /* MDVictoryViewController.h */,
 				9DC5785619914DB900843AF8 /* MDVictoryViewController.m */,
 			);
-			name = Battle;
+			path = Battle;
 			sourceTree = "<group>";
 		};
 		9D473864199541B7009E6FE9 /* Inventory */ = {
@@ -228,7 +228,7 @@
 				9D47387A1999198F009E6FE9 /* MDPlayerViewController.h */,
 				9D47387B1999198F009E6FE9 /* MDPlayerViewController.m */,
 			);
-			name = Inventory;
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 		9D473865199541CD009E6FE9 /* Item Details */ = {
@@ -239,7 +239,7 @@
 				9D4E16C41964535D0042E7CF /* MDItemPropertyTableViewCell.h */,
 				9D4E16C51964535D0042E7CF /* MDItemPropertyTableViewCell.m */,
 			);
-			name = "Item Details";
+			path = "Item Details";
 			sourceTree = "<group>";
 		};
 		9D4738661998EF38009E6FE9 /* Armor */ = {
@@ -257,7 +257,7 @@
 				9D47387819991357009E6FE9 /* MDHat.m */,
 				9D47387D1999321B009E6FE9 /* Decorators */,
 			);
-			name = Armor;
+			path = Armor;
 			sourceTree = "<group>";
 		};
 		9D47386D1998F752009E6FE9 /* Game Engine */ = {
@@ -266,7 +266,7 @@
 				9D47386E1998F75C009E6FE9 /* MDGameEngine.h */,
 				9D47386F1998F75C009E6FE9 /* MDGameEngine.m */,
 			);
-			name = "Game Engine";
+			path = "Game Engine";
 			sourceTree = "<group>";
 		};
 		9D47387D1999321B009E6FE9 /* Decorators */ = {
@@ -285,7 +285,7 @@
 				9D47388D19995234009E6FE9 /* MDReviveArmorDecorator.h */,
 				9D47388E19995234009E6FE9 /* MDReviveArmorDecorator.m */,
 			);
-			name = Decorators;
+			path = Decorators;
 			sourceTree = "<group>";
 		};
 		9D4E16C019643EDE0042E7CF /* Application */ = {
@@ -294,7 +294,7 @@
 				9DE6A6B4196339EB00D42339 /* MDAppDelegate.h */,
 				9DE6A6B5196339EB00D42339 /* MDAppDelegate.m */,
 			);
-			name = Application;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		9DB2FA31196CD143004F4B3E /* Model */ = {
@@ -323,7 +323,7 @@
 				9DC578691991606B00843AF8 /* MDHammer.m */,
 				9DDDACEE1981DD4D00C93AB8 /* Decorators */,
 			);
-			name = Weapons;
+			path = Weapons;
 			sourceTree = "<group>";
 		};
 		9DDDACEE1981DD4D00C93AB8 /* Decorators */ = {
@@ -344,7 +344,7 @@
 				9D47385C1993D37F009E6FE9 /* MDCritDamageWeaponDecorator.h */,
 				9D47385D1993D37F009E6FE9 /* MDCritDamageWeaponDecorator.m */,
 			);
-			name = Decorators;
+			path = Decorators;
 			sourceTree = "<group>";
 		};
 		9DE6A699196339EB00D42339 = {
@@ -398,9 +398,10 @@
 				9DE6A6AD196339EB00D42339 /* MDItems-Info.plist */,
 				9DE6A6AE196339EB00D42339 /* InfoPlist.strings */,
 				9DE6A6B1196339EB00D42339 /* main.m */,
-				9DE6A6B3196339EB00D42339 /* MDItems-Prefix.pch */,
+				9DB3AD66199D47E800F74CD6 /* MDItems-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = ../../MDItems/MDItems;
 			sourceTree = "<group>";
 		};
 		9DE6A6CA196339EB00D42339 /* MDItemsTests */ = {
@@ -428,7 +429,7 @@
 				9D473865199541CD009E6FE9 /* Item Details */,
 				9D473863199541A7009E6FE9 /* Battle */,
 			);
-			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9DF2E5EE197FEB0E002F60FE /* Player */ = {
@@ -439,7 +440,7 @@
 				9DF2E5EB197FEB0A002F60FE /* MDPlayer.h */,
 				9DF2E5EC197FEB0A002F60FE /* MDPlayer.m */,
 			);
-			name = Player;
+			path = Player;
 			sourceTree = "<group>";
 		};
 		9DF2E5EF197FEB9F002F60FE /* Items */ = {
@@ -452,7 +453,7 @@
 				9D4738661998EF38009E6FE9 /* Armor */,
 				9DC5786119915ED600843AF8 /* Weapons */,
 			);
-			name = Items;
+			path = Items;
 			sourceTree = "<group>";
 		};
 		9DF2E617198005B9002F60FE /* Enemies */ = {
@@ -461,7 +462,7 @@
 				9DF2E618198005C7002F60FE /* MDEnemy.h */,
 				9DF2E619198005C7002F60FE /* MDEnemy.m */,
 			);
-			name = Enemies;
+			path = Enemies;
 			sourceTree = "<group>";
 		};
 		9DF955BD19756227003900AF /* Categories */ = {
@@ -472,7 +473,7 @@
 				9D3C768E1987C8BD00013B2A /* NSObject+Random.h */,
 				9D3C768F1987C8BD00013B2A /* NSObject+Random.m */,
 			);
-			name = Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
