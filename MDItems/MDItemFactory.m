@@ -58,6 +58,7 @@
             break;
     }
     
+    // Vary the starting stats of the weapon by a small amount
     [self tweakBaseStatsOfItem:weapon byMaxAmount:2];
     
     // Check for rarity
@@ -77,7 +78,6 @@
     }
     
     return weapon;
-
 }
 
 +(MDArmor*)randomArmor {

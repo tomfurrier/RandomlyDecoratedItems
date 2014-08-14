@@ -47,7 +47,7 @@
             damage += bonusDamage;
         }
         
-        // Finally, apply the damage to the enemy's health
+        // Apply the damage to the enemy's health
         enemy.currentHealth -= damage;
         
         // Log what happened to display to the player
