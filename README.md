@@ -1,11 +1,15 @@
 RandomlyDecoratedItems
 ======================
 
+<p>
+RandomlyDecoratedItems is an iOS app demonstrating the creation and use of randomly generated loot using the decorator pattern.
+</p>
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotBattleView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone"> <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotPlayerView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone"> <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotItemDetailsView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone">
 </p>
 
-RandomlyDecoratedItems is an iOS app demonstrating the creation and use of randomly generated loot using the decorator pattern.
+
 
 The Decorator Pattern
 ---------------------
