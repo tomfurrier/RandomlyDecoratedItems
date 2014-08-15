@@ -85,7 +85,7 @@
     SEL selector;
     NSString *buttonTitle;
     
-    if ([[MDSharedPlayerData sharedPlayerData] isItemEquipped:self.item]) {
+    if ([[MDSharedPlayerData sharedPlayerData].player isItemEquipped:self.item]) {
         selector = @selector(unequipPressed);
         buttonTitle = @"Unequip";
     } else {
@@ -109,9 +109,9 @@
     
     // Set the item to the shared player instance's relevant item slot
     if ([self.item isKindOfClass:[MDWeapon class]]) {
-        [playerData equipWeapon:(MDWeapon*)self.item];
+        [playerData.player equipWeapon:(MDWeapon*)self.item];
     } else if ([self.item isKindOfClass:[MDArmor class]]) {
-        [playerData equipArmor:(MDArmor*)self.item];
+        [playerData.player equipArmor:(MDArmor*)self.item];
     }
     
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -123,9 +123,9 @@
     
     // Set the relevant item slot to nil
     if ([self.item isKindOfClass:[MDWeapon class]]) {
-        [playerData unequipWeapon:(MDWeapon*)self.item];
+        [playerData.player unequipWeapon:(MDWeapon*)self.item];
     } else if ([self.item isKindOfClass:[MDArmor class]]) {
-        [playerData unequipArmor:(MDArmor*)self.item];
+        [playerData.player unequipArmor:(MDArmor*)self.item];
     }
 
     [self.navigationController popToRootViewControllerAnimated:YES];

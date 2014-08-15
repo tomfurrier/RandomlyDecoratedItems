@@ -179,8 +179,8 @@
         UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
         MDVictoryViewController *victoryVC = (MDVictoryViewController*)navController.viewControllers[0];
         
-        // Reward the player with 0 - 3 items
-        int numberOfItems = [self randomFromMin:0 max:3];
+        // Reward the player with 1 - 3 items
+        int numberOfItems = [self randomFromMin:1 max:3];
         NSMutableArray *droppedItems = [NSMutableArray arrayWithCapacity:3];
         
         for (int i = 0; i < numberOfItems; i++) {

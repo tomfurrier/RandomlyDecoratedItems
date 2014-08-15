@@ -104,19 +104,19 @@
     // Buttons in the storyboard are tagged to indicate which inventory slot they apply to
     switch (sender.tag) {
         case 1000:
-            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData] allInventoryWeapons];
+            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData].player allInventoryWeapons];
             break;
         case 1001:
-            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData] allInventoryArmorOfType:armorTypeHead];
+            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData].player allInventoryArmorOfType:armorTypeHead];
             break;
         case 1002:
-            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData] allInventoryArmorOfType:armorTypeBody];
+            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData].player allInventoryArmorOfType:armorTypeBody];
             break;
         case 1003:
-            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData] allInventoryArmorOfType:armorTypeHands];
+            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData].player allInventoryArmorOfType:armorTypeHands];
             break;
         case 1004:
-            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData] allInventoryArmorOfType:armorTypeFeet];
+            self.inventoryItemsToDisplay = [[MDSharedPlayerData sharedPlayerData].player allInventoryArmorOfType:armorTypeFeet];
             break;
         default:
             break;
