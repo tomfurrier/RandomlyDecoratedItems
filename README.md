@@ -9,10 +9,25 @@ RandomlyDecoratedItems is an iOS app demonstrating the creation and use of rando
 <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotBattleView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone"> <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotPlayerView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone"> <img src="https://raw.githubusercontent.com/uimike/RandomlyDecoratedItems/master/readmeImages/screenshotItemDetailsView.png" alt="rareItemDetailsView" width="213" height="320" class="alignnone">
 </p>
 
+App Structure
+-------------
 
+**MDBattleViewController** - Contained in the first tab and presents the battle UI to the player, allowing them to attack the enemy. This ViewController generates items when an enemy is defeated and presents an **MDVictoryViewController** for the player to pick the items up, which can push an **MDItemDetailsViewController** that displays more detailed information about the item.
 
-The Decorator Pattern
----------------------
+**MDPlayerViewController** - Contained in the second tab and presents a UI for the player to equip items into various item slots. Pushes an **MDInventoryTableViewController** for the player to select an item, which pushes an **MDItemDetailsViewController** to display more detailed information about the item and allow the player to identify and equip it.
+
+**MDGameEngine** - This is where the logic for attacking and being attacked occur. Methods in this class will call trigger events on the decorated weapons and armor, such as player:didHitEnemy:forDamage:messageLog:
+
+**MDItemFactory** - Generates items at random, starting from the randomItem class. Gives a chance to wrap items in decorators, adding modifiers to the items.
+
+**MDItem** - Base class for all items. Has subclasses **MDWeapon** and **MDarmor**. These subclasses are subclassed by specific items (like **MDSword** or **MDBoots**), and by weapon and armor decorators. See the next section for more details on the decorators.
+
+**MDSharedPlayerData** - A singleton that contains the **MDPlayer** instance used throughout the app.
+
+**MDPlayer** - Contains player info, like current health and equipped weapons and armor. Also handles logic for equipping and unequipping items and provides inventory access and information.
+
+Use of the Decorator Pattern
+----------------------------
 
 This app's item model is designed with the decorator pattern. The pattern’s aim is to compose behavior and properties of objects at run-time, instead of hardcoding them at compile-time. This can be accomplished by wrapping an object in another object that shares the same superclass. The wrapper contains a reference to the object it’s wrapping, and simply sits in between method calls and getters to inject its own behavior.
 
